@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<!-- testNG suite example: http://websystique.com/java/testing/testng-suites-example/ -->
+<suite name="All Suite">
+	<test name="all" parallel="classes" thread-count="1">
+		<packages>
+			<package name="test.*" />
+		</packages>
+	</test>
+</suite>
