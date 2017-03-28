@@ -1,5 +1,6 @@
 language: java
 jdk:
 - oraclejdk8
-# uncomment and edit the following line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+script:
+- mvn install:install-file -Dfile=uitest-framework/lib/ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
+- mvn install -Dskip_tests=true
