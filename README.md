@@ -1,4 +1,4 @@
-UITest-Parent
+UITest-Parent  [![Build Status](https://travis-ci.org/ycj28c/UI-Test-Framework.svg?branch=master)](https://travis-ci.org/ycj28c/UI-Test-Framework)
 ===============
 * uitest-framework: the framework with JAVA, MAVEN, TestNG, WebDriver(Selenium2)
 * uitest-demo: the demo shows how to use the uitest-framework
