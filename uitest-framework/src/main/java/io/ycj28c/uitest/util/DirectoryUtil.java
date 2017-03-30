@@ -1,6 +1,11 @@
 package io.ycj28c.uitest.util;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 public class DirectoryUtil {
 	
@@ -36,6 +41,35 @@ public class DirectoryUtil {
         }
         return dir.delete(); //delete the empty folder
     }
+    
+    /**
+     * recursively remove all the file and the files in sub folder (not include the target directory)
+     * @param dir
+     * @return boolean Returns "true" if all deletions were successful.
+     *                 If a deletion fails, the method stops attempting to
+     *                 delete and returns "false".
+     */
+    public static boolean cleanDir(File dir){
+    	try {
+			FileUtils.cleanDirectory(dir);
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+    }
+    
+    /**
+     * find the total number of the files match with the pattern in target directory (no recursively)
+     * @param dir
+     * @param pattern
+     * @return
+     */
+	public static int totalMatchedFiles(File dir, String pattern){
+		FileFilter fileFilter = new WildcardFileFilter(pattern);
+		File[] files = dir.listFiles(fileFilter);
+		return files.length;
+	}
 
     /**
      * test
