@@ -3,6 +3,7 @@ package io.ycj28c.uitest.util;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -69,6 +70,23 @@ public class DirectoryUtil {
 		FileFilter fileFilter = new WildcardFileFilter(pattern);
 		File[] files = dir.listFiles(fileFilter);
 		return files.length;
+	}
+	
+	/**
+	 * delete the files match with the pattern in target directory (no recursively)
+	 * @param downloadDir
+	 * @param filePattern
+	 */
+	public static void deleteMatchedFiles(File downloadDir, String filePattern) {
+		FileFilter fileFilter = new WildcardFileFilter(filePattern);
+		File[] files = downloadDir.listFiles(fileFilter);
+		for(int i=0;i<files.length;i++){
+			try {
+				Files.deleteIfExists(files[i].toPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
     /**

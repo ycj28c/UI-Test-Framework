@@ -319,6 +319,12 @@ Sometimes we may need to login/logout with different url(such as single sign on 
 
 Change the login_mode to select the login options you want.
 To add more login/logout, just add "loginUrl" plus login_mode number, such as loginUrl3, loginUrl4.	
+
+Browser Download Folder Support
+---------------------------
+You can customize the chrome/firefox browser download folder by add below configuration(must use\\ instead of/):
+
+	BROWSER_DOWNLOAD_FOLDER = c:\\selenium_browser_download
 	
 	
 	

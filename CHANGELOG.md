@@ -3,6 +3,10 @@ CHANGELOG
 
 > more update is coming soon
 
+2.1.9 (2017-03-31)
+------------------
+- add the browser download folder support
+
 2.1.8 (2017-02-28)
 ------------------
 - update the selenium version and related driver support to 3.1.0, fix deprecate
