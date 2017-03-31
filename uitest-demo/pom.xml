@@ -15,7 +15,7 @@
 
 	<properties>
 		<runtime.env>development</runtime.env>
-		<uitest-framework.version>1.0.0-SNAPSHOT</uitest-framework.version>
+		<uitest-framework.version>2.1.9</uitest-framework.version>
 		<skip_demo_tests>true</skip_demo_tests>
 	</properties>
 
