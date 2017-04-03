@@ -6,6 +6,7 @@ CHANGELOG
 2.1.9 (2017-03-31)
 ------------------
 - add the browser download folder support
+- add the page title and page url information into slack and report when test fail
 
 2.1.8 (2017-02-28)
 ------------------

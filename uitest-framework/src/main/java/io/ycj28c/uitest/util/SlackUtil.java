@@ -67,7 +67,10 @@ public class SlackUtil {
 		}
 		builder.addPart("channels", postTo);
 		builder.addPart("title",  new StringBody(edModal.getMethodName(), ContentType.MULTIPART_FORM_DATA));
-		builder.addPart("initial_comment",  new StringBody("It is not me, it is a Slack Bot", ContentType.MULTIPART_FORM_DATA));
+		
+//		builder.addPart("initial_comment",  new StringBody("It is not me, it is a Slack Bot", ContentType.MULTIPART_FORM_DATA));
+		String errorPage = "*Error Page Title*: " + edModal.getPageTitle() + "\n" + "*Error Page Url*: "+ edModal.getCurrentUrl();
+		builder.addPart("initial_comment",  new StringBody(errorPage, ContentType.MULTIPART_FORM_DATA));
 		
 		//send HTTP request
 		HttpEntity multipart = builder.build();

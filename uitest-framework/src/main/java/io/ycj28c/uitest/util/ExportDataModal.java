@@ -1,6 +1,7 @@
 package io.ycj28c.uitest.util;
 
 public class ExportDataModal {
+
 	private String methodName = null;
 	private String imageName = null;
 	private String localImagePath = null;
@@ -9,6 +10,8 @@ public class ExportDataModal {
 	private String startTime = null;
 	private String endTime = null;
 	private String description = null;
+	private String currentUrl = null;
+	private String pageTitle = null;
 	
 	public String getMethodName() {
 		return methodName;
@@ -57,6 +60,18 @@ public class ExportDataModal {
 	}
 	public void setLocalImagePath(String localImagePath) {
 		this.localImagePath = localImagePath;
+	}
+	public String getCurrentUrl() {
+		return currentUrl;
+	}
+	public void setCurrentUrl(String currentUrl) {
+		this.currentUrl = currentUrl;
+	}
+	public String getPageTitle() {
+		return pageTitle;
+	}
+	public void setPageTitle(String pageTitle) {
+		this.pageTitle = pageTitle;
 	}
 
 }

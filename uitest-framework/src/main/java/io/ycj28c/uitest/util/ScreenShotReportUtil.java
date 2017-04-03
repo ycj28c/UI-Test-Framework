@@ -42,6 +42,8 @@ public class ScreenShotReportUtil {
 		map.put("startTime", edModal.getStartTime());
 		map.put("endTime", edModal.getEndTime());
 		map.put("description", tranformatToHtml(edModal.getDescription()));
+		map.put("pageTitle", tranformatToHtml(edModal.getPageTitle()));
+		map.put("currentUrl", tranformatToHtml(edModal.getCurrentUrl()));
 		filling.add(map);	
 	}
 	
@@ -150,6 +152,16 @@ public class ScreenShotReportUtil {
     		sb.append("<tr>");
     		sb.append("<td>Description</td>");
     		sb.append("<td>"+map.get("description")+"</td>");
+    		sb.append("</tr>");
+    		
+    		sb.append("<tr>");
+    		sb.append("<td>Page Title</td>");
+    		sb.append("<td>"+map.get("pageTitle")+"</td>");
+    		sb.append("</tr>");
+    		
+    		sb.append("<tr>");
+    		sb.append("<td>Page Url</td>");
+    		sb.append("<td>"+map.get("currentUrl")+"</td>");
     		sb.append("</tr>");
     		
     		sb.append("<tr>");

@@ -174,6 +174,8 @@ abstract public class AbstractSeleniumTest extends AbstractTest{
 				edModal.setStartTime(TimeUtil.millisecondsToTime(testResult.getStartMillis()));
 				edModal.setEndTime(TimeUtil.millisecondsToTime(testResult.getEndMillis()));
 				edModal.setDescription(testResult.getMethod().getDescription());
+				edModal.setCurrentUrl(driver.getCurrentUrl());
+				edModal.setPageTitle(driver.getTitle());
 	
 				if(PropertiesUtil.getScreenshotStatus(env)){ 	//if testNG fails, screen shot
 					log.info("\n\n ** Screen Shot! for test {}", testResult.getName());
