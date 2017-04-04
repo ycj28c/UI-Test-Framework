@@ -91,7 +91,7 @@ public class SeleniumConfig {
 	@Bean(name = "driveFactory")
 	@DependsOn("systemProperties")
 	Supplier<WebDriver> getDriverFactory() throws MalformedURLException {
-		String selectedBrowser = System.getProperty("browser");
+		String selectedBrowser = System.getProperty("browser").toLowerCase();
 		if(selectedBrowser == null||selectedBrowser.trim().equals("")){
 			selectedBrowser = "chrome";
 			System.setProperty("browser", "chrome");

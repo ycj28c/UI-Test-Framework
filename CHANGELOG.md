@@ -7,6 +7,7 @@ CHANGELOG
 ------------------
 - add the browser download folder support
 - add the page title and page url information into slack and report when test fail
+- ignore the case sensitive of the browser/slack parameter
 
 2.1.8 (2017-02-28)
 ------------------

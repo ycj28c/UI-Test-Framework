@@ -187,7 +187,7 @@ abstract public class AbstractSeleniumTest extends AbstractTest{
 				}	
 				
 				if (PropertiesUtil.getSlackStatus(env)
-						&& !System.getProperty("slack").trim().equals("off")) { // slack support
+						&& !System.getProperty("slack").trim().equalsIgnoreCase("off")) { // slack support
 					log.info("\n\n ** Slack Message Prepare! for test {}", testResult.getName());
 					// upload the image to slack
 					SlackConnection slackCon = new SlackConnection(env);
