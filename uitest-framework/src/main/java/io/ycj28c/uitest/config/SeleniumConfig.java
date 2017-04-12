@@ -2,6 +2,7 @@ package io.ycj28c.uitest.config;
 
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -125,7 +127,22 @@ public class SeleniumConfig {
 			 * Supplier<WebDriver> defaultSupplier = new DefaultRemoteSupplier();
 			 * return defaultSupplier;
 			 */
-			return FirefoxDriver::new;
+//			return FirefoxDriver::new;
+			FirefoxProfile profile = new FirefoxProfile(); 
+			if(env.getProperty("BROWSER_DOWNLOAD_FOLDER") != null && !env.getProperty("BROWSER_DOWNLOAD_FOLDER").isEmpty()){
+				String downloadFilepath = env.getProperty("BROWSER_DOWNLOAD_FOLDER");
+//				profile.setPreference("browser.download.lastDir", downloadFilepath);
+//				profile.setPreference("browser.download.defaultFolder", downloadFilepath);
+				profile.setPreference("browser.download.dir", downloadFilepath);
+				profile.setPreference("browser.download.manager.showWhenStarting", false);
+				profile.setPreference("plugin.disable_full_page_plugin_for_types", "application/pdf, application/vnd.fdf");
+				profile.setPreference("pdfjs.disabled", true);
+
+				profile.setPreference("browser.download.folderList", 2);
+				profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf, application/x-msdownload, application/oct‌​et-stream");
+//				profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+			}
+			return () -> new FirefoxDriver(profile);
 		} else if (selectedBrowser.equals("safari")) {
 			DesiredCapabilities capabilities = DesiredCapabilities.safari();
 			capabilities.setBrowserName("safari");
@@ -135,6 +152,14 @@ public class SeleniumConfig {
 		} else if (selectedBrowser.equals("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-extensions");
+			if(env.getProperty("BROWSER_DOWNLOAD_FOLDER") != null && !env.getProperty("BROWSER_DOWNLOAD_FOLDER").isEmpty()){
+				String downloadFilepath = env.getProperty("BROWSER_DOWNLOAD_FOLDER");
+				Map<String, Object> preferences = new Hashtable<String, Object>();
+				preferences.put("profile.default_content_settings.popups", 0);
+				preferences.put("download.prompt_for_download", "false");
+				preferences.put("download.default_directory", downloadFilepath);
+				options.setExperimentalOption("prefs", preferences);
+			}
 			//driver = new ChromeDriver(options);
 			//return ChromeDriver::new;
 			return () -> new ChromeDriver(options);
